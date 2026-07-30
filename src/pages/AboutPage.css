@@ -1,0 +1,187 @@
+:root {
+    --primary: #4f46e5;
+    --text-dark: #0f172a;
+    --text-gray: #64748b;
+    --bg-card: #ffffff;
+    --bg-page: #f8fafc;
+  }
+  
+  .about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  .about-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  
+  .about-header h1 {
+    font-size: 2rem;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+  }
+  
+  .about-header p {
+    color: var(--text-gray);
+  }
+  
+  /* Lưới 6 thẻ thành viên (Tự căn 3 cột trên máy tính, 1-2 cột trên di động) */
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+  
+  .team-card {
+    background: var(--bg-card);
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .team-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-avatar img {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 12px;
+    border: 3px solid #e0e7ff;
+  }
+  
+  .card-content h3 {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+  
+  .role-tag {
+    display: inline-block;
+    background-color: #e0e7ff;
+    color: var(--primary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  
+  .contact-info {
+    font-size: 0.9rem;
+    color: var(--text-gray);
+    margin-bottom: 16px;
+    text-align: left;
+    width: 100%;
+    background: var(--bg-page);
+    padding: 10px 14px;
+    border-radius: 8px;
+  }
+  
+  .contact-info p {
+    margin: 4px 0;
+  }
+  
+  .btn-view-detail {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 500;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.2s;
+  }
+  
+  .btn-view-detail:hover {
+    background-color: #4338ca;
+  }
+  
+  /* Modal Popup */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-card {
+    background: white;
+    width: 90%;
+    max-width: 450px;
+    border-radius: 12px;
+    padding: 24px;
+    position: relative;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-gray);
+  }
+  
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  
+  .modal-header img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .modal-header h2 {
+    font-size: 1.3rem;
+    margin-bottom: 4px;
+  }
+  
+  .modal-body .info-item {
+    margin-bottom: 12px;
+  }
+  
+  .modal-body label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-gray);
+    text-transform: uppercase;
+  }
+  
+  .modal-body p {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    margin-top: 2px;
+  }
+  
+  .modal-body a {
+    color: var(--primary);
+    text-decoration: none;
+  }
