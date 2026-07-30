@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
 
 // 1. Nhập các thành phần giao diện dùng chung (Components)
 import Header from './components/Header';

@@ -2,50 +2,51 @@ import React, { useState, useEffect } from 'react';
 import MovieCard from '../components/MovieCard';
 
 export default function HomePage() {
-  // State lưu danh sách phim
   const [featuredMovies, setFeaturedMovies] = useState([]);
   const [trendingMovies, setTrendingMovies] = useState([]);
 
-  // Mô phỏng fetching dữ liệu từ API khi component mount
   useEffect(() => {
-    // Dữ liệu mẫu (Mock data)
+    // Dữ liệu mẫu chứa hình ảnh chất lượng cao từ TMDB
     const mockData = [
       {
         id: 1,
         title: 'Avatar: The Way of Water',
-        poster: 'https://via.placeholder.com/300x450',
-        banner: 'https://via.placeholder.com/1200x400',
+        poster: '/images/avatar-way-of-water.jpg',
+        banner: '/images/avatar-way-of-water.jpg',
         rating: 8.5,
         year: 2022,
-        isFeatured: true
+        isFeatured: true,
+        desc: 'Set more than a decade after the events of the first film, Avatar: The Way of Water begins to tell the story of the Sully family...'
       },
       {
         id: 2,
         title: 'Oppenheimer',
-        poster: 'https://via.placeholder.com/300x450',
+        poster: '/images/avatar-way-of-water.jpg',
         rating: 8.9,
         year: 2023,
-        isFeatured: false
+        isFeatured: false,
+        desc: 'The story of J. Robert Oppenheimer role in the development of the atomic bomb during World War II.'
       },
       {
         id: 3,
         title: 'Interstellar',
-        poster: 'https://via.placeholder.com/300x450',
+        poster: '/images/avatar-way-of-water.jpg',
         rating: 8.6,
         year: 2014,
-        isFeatured: false
+        isFeatured: false,
+        desc: 'A team of explorers travel through a wormhole in space in an attempt to ensure humanity survival.'
       },
       {
         id: 4,
         title: 'Spider-Man: Across the Spider-Verse',
-        poster: 'https://via.placeholder.com/300x450',
+        poster: '/images/avatar-way-of-water.jpg',
         rating: 8.7,
         year: 2023,
-        isFeatured: false
+        isFeatured: false,
+        desc: 'Miles Morales catapults across the Multiverse, where he encounters a team of Spider-People charged with protecting its very existence.'
       }
     ];
 
-    // Lọc và cập nhật vào state
     setFeaturedMovies(mockData.filter(movie => movie.isFeatured));
     setTrendingMovies(mockData);
   }, []);
@@ -54,62 +55,47 @@ export default function HomePage() {
 
   return (
     <div className="homepage-container">
-      {/* 1. Hero Banner Section */}
+      {/* Hero Banner Section */}
       {heroMovie && (
         <section 
           className="hero-banner"
           style={{
-            backgroundImage: `linear-gradient(to top, rgba(0,0,0,0.8), transparent), url(${heroMovie.banner})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            padding: '100px 20px 40px',
-            color: '#fff',
-            marginBottom: '30px'
+            backgroundImage: `linear-gradient(to top, #141414 10%, rgba(20,20,20,0.4) 50%, rgba(20,20,20,0.8) 100%), url(${heroMovie.poster})`
           }}
         >
-          <div className="hero-content" style={{ maxWidth: '800px' }}>
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '10px' }}>{heroMovie.title}</h1>
-            <p style={{ marginBottom: '15px' }}>
-              Năm phát hành: {heroMovie.year} | Đánh giá: ⭐ {heroMovie.rating}/10
+          <div className="hero-content">
+            <span className="badge-featured">PHIM NỔI BẬT</span>
+            <h1 className="hero-title">{heroMovie.title}</h1>
+            <p className="hero-meta">
+              <span>Năm: {heroMovie.year}</span>
+              <span className="rating-star">⭐ {heroMovie.rating}/10</span>
             </p>
-            <button 
-              style={{
-                padding: '10px 24px',
-                backgroundColor: '#e50914',
-                color: '#fff',
-                border: 'none',
-                borderRadius: '4px',
-                cursor: 'pointer',
-                fontWeight: 'bold'
-              }}
-              onClick={() => alert(`Xem phim: ${heroMovie.title}`)}
-            >
-              Xem ngay
-            </button>
+            <p className="hero-desc">{heroMovie.desc}</p>
+            <div className="hero-actions">
+              <button 
+                className="btn-play"
+                onClick={() => alert(`Đang phát: ${heroMovie.title}`)}
+              >
+                ▶ Xem Ngay
+              </button>
+              <button className="btn-info">ℹ Thông Tin Chi Tiết</button>
+            </div>
           </div>
         </section>
       )}
 
-      {/* 2. Main Content Section */}
-      <div className="main-content" style={{ padding: '0 20px' }}>
-        <section className="movie-section" style={{ marginBottom: '40px' }}>
-          <h2 style={{ marginBottom: '20px', color: '#333' }}>Phim Nổi Bật</h2>
+      {/* Main Content Section */}
+      <main className="main-content">
+        <section className="movie-section">
+          <h2 className="section-title">Phim Thịnh Hành</h2>
           
-          {/* Render danh sách phim sử dụng MovieCard */}
-          <div 
-            className="movie-grid"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))',
-              gap: '20px'
-            }}
-          >
+          <div className="movie-grid">
             {trendingMovies.map((movie) => (
               <MovieCard key={movie.id} movie={movie} />
             ))}
           </div>
         </section>
-      </div>
+      </main>
     </div>
   );
 }
